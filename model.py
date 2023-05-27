@@ -35,15 +35,15 @@ class DigitRecognitionModel:
         self.model.add(keras.layers.Dense(10))
         self.model.add(keras.layers.Activation("softmax"))
 
-        def compile_model(self):
+    def compile_model(self):
             self.model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
         
-        def train_model(self, x_trainr, y_train, epochs=5, validation_split = 0.3):
+    def train_model(self, x_trainr, y_train, epochs=5, validation_split = 0.3):
             self.model.fit(x_trainr, y_train, epochs=epochs, validation_split=validation_split)
 
-        def evaluate_model(self, x_testr, y_test):
+    def evaluate_model(self, x_testr, y_test):
             test_loss, test_acc = self.model.evaluate(x_testr, y_test)
             return test_loss, test_acc
-        def predict(self, x):
+    def predict(self, x):
             predictions = self.model.predict(x)
             return predictions
