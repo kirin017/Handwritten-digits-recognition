@@ -1,0 +1,59 @@
+
+/* CSS Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #22616e;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size:x-large;
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #777;
+}
+
+.input-group input[type="file"] {
+    padding: 5px;
+}
+
+.input-group button {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.output {
+    margin-top: 20px;
+}
+.per-infor {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+a {
+    font-size: large;
+    color: #389fb4;
+}

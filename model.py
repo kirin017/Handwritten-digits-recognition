@@ -47,3 +47,5 @@ class DigitRecognitionModel:
     def predict(self, x):
             predictions = self.model.predict(x)
             return predictions
+    def save_model(self, Path):
+          self.model.save(Path)

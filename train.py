@@ -22,6 +22,6 @@ model.build_model()
 model.compile_model()
 model.train_model(x_trainr, y_train)
 
-tf.saved_model(model, SAVE_MODEL_PATH)
+model.save_model(SAVE_MODEL_PATH)
 predictions = model.predict([x_testr])
 print(np.argmax(predictions[0]))
