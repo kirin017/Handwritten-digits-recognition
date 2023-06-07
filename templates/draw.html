@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vẽ trên Canvas</title>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+    
+</head>
+<body>
+    <div>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <button onclick="sendImageToFlask()">Gửi ảnh đến Flask</button>
+        <button id="clearbtn">Clear</button>
+    </div>
+   
+    
+    <button id="save">Save</button>
+    
+    <form class="p-3 text-center" action='/predict_art', method ='post' enctype="multipart/form-data">
+        <input class="btn btn-primary mt-3" type="submit" value ="Predict Image">
+    </form>
+    {% if pred %}
+						<p class ="text-center">Predict: {{pred}}</p>
+					{% endif %}
+                <script src="/static/js/script.js"></script>
+            <script>
+                   document.getElementById("clearbtn").onclick = onClear;
+        function onClear(){
+            isDrawing = false;
+            context.fillStyle = "white";
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.fillStyle = "black";
+  }     dataURL = canvas.toDataURL('image/png');
+        var image = new Image();
+        image.src = dataURL;
+    function sendImageToFlask() {
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        var dataURL = canvas.toDataURL('image/png');
+        let form = new FormData()
+        form.append(dataURL)
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/predict_', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log('Ảnh đã được gửi thành công đến Flask!');
+        }
+        };
+        xhr.send('imageData=' + encodeURIComponent(dataURL));
+  }
+                  </script>
+</body>
+</html>
+

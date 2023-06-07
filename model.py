@@ -49,3 +49,6 @@ class DigitRecognitionModel:
             return predictions
     def save_model(self, Path):
           self.model.save(Path)
+
+def load_model(Path):
+      return tf.keras.models.load_model(Path)

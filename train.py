@@ -1,10 +1,10 @@
-import tensorflow as tf
+
 import matplotlib.pyplot as plt
 import numpy as np
 from model import DigitRecognitionModel
 
 SAVE_MODEL_PATH = "models/digit_recog_models.h5"
-
+import tensorflow as tf
 mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -23,5 +23,4 @@ model.compile_model()
 model.train_model(x_trainr, y_train)
 
 model.save_model(SAVE_MODEL_PATH)
-predictions = model.predict([x_testr])
-print(np.argmax(predictions[0]))
+
