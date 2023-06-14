@@ -48,21 +48,6 @@ def pre(image):
     return np.argmax(pred)
 
 
-@app.route('/draw', methods=['POST'])
-def draw():
-    return render_template('draw.html')
-
-@app.route('/predict_art', methods=['POST'])
-def predict_art():
-    # Lấy ảnh từ request.form hoặc request.files tùy vào cách bạn gửi ảnh lên
-    # Ví dụ:
-    image = request.form['imageData']
-    image_path = "./images/" + image.filename
-    image.save(image_path)
-    newimg = preprocess_image(image_path)
-    pred = model.predict(newimg)
-    return render_template('draw.html', pred = np.argmax(pred))
-
     # Trả về kết quả dự đoán
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

@@ -31,10 +31,10 @@
 			</div>
 			<div class="demo-wrapper">
 				<div>
-					
 					<form class="p-3 text-center" action='/predict', method ='post' enctype="multipart/form-data">
-						<input class="form-control" type="file" name= "imagefile" onchange="chooseFile(this)">
-						<input class="btn btn-primary mt-3" type="submit" value ="Predict Image">
+						<img id="blah" src="http://placehold.it/300x400" alt="your image" style="max-width: 280px;" />
+						<input class="form-control" type="file" name= "imagefile" onchange="readURL(this);" />				
+						<input class="btn btn-primary mt-3" type="submit" value ="Predict Image" />
 					</form>
 					<div id="imageContainer"></div>
 					{% if pred %}
@@ -42,15 +42,23 @@
 					{% endif %}
 				</div>
 			</div>
-			<div>
-				<form action="/draw", method="post">
-					<input type="submit" value="Click to draw" />
-				</form>
-			</div>
 	
 		</div>
 	</div>
-	
+	<script>
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+	</script>
 </body>
 </html>
 
